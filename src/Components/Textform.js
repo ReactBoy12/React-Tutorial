@@ -7,18 +7,27 @@ const Textform = (props) => {
         
         let upperCaseText  = text.toUpperCase()
         setText(upperCaseText);
+        if(text.length>0){
+        props.showAlert("converted to the UpperCase","success")
+    }
     }
 
     const onClicklowHandler=()=>{
         
         let LowerCaseText  = text.toLowerCase()
         setText(LowerCaseText);
+        if(text.length>0){
+            props.showAlert("converted to the lowerCase","success")
+        }
     }
 
     const onClickClearHandler=()=>{
         
         let Clear  = ''
         setText(Clear);
+        if(text.length>0){
+            props.showAlert("Cleared","success")
+        }
     }
     
     const onChangeHandler=(event)=>{
@@ -36,7 +45,7 @@ const Textform = (props) => {
 
             <button className='btn btn-primary' onClick={onClickHandler}>Change to UpperCase</button>
             <button className='mx-4 btn btn-primary' onClick={onClicklowHandler}>Change to LowerCase</button>
-            <button className='mx-4 btn btn-primary' onClick={onClickClearHandler}>Clear</button>
+            <button className='mx-4 btn btn-primary hover-{}' onClick={onClickClearHandler}>Clear</button>
         </div>
 
         <div className="container" style={{color: props.mode==='dark'?'white':'#18044ae3'}}>
