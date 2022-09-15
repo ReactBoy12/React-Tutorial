@@ -11,7 +11,8 @@ function App() {
   const[mode, setMode] = useState("light");
   const [text, setText] = useState("DarK Mode")
   const[textColor, setTextColor] = useState("dark");
-
+  
+  // const [diffColor, setDiffColor] = useState("")
   const [alert, setAlert] = useState(null)
 
   const toggleMode = () =>{
@@ -21,8 +22,9 @@ function App() {
       setText("Normal Mode")
      
       document.body.style.backgroundColor = "#18044ae3"
-
+      
       showAlert("dark mode enabled", "success")
+      document.title="text utils-(dark Mode)"
     }
     else{
       setMode("light");
@@ -30,6 +32,25 @@ function App() {
       setText("Dark Mode")
       document.body.style.backgroundColor = "white"
       showAlert("light mode enabled", "warning")
+      
+
+      setInterval(() => {
+        document.title="text utils-(light Mode)"
+      }, 2000);
+
+      setInterval(() => {
+        document.title="its Amazing download it fast"
+      }, 1500);
+    }
+  }
+
+  const redThemeToggle = () =>{
+    if(mode === "light" || mode === "Dark"){
+      setMode("danger")
+      document.title="text utils-(red Mode)"
+    }
+    else{
+      setMode("light")
     }
   }
 
@@ -48,7 +69,7 @@ function App() {
 
   return (
     <> 
-    <Navbar title="TextUtilsss" text={text} mode = {mode} textColor={textColor} toggleMode = {toggleMode}/>
+    <Navbar title="TextUtilsss" text={text} redMode={mode} mode = {mode} textColor={textColor} toggleMode = {toggleMode} redThemeToggle={redThemeToggle}/>
     <Alert alert={alert}/>
     <div className="container">
     <Textform heading="Enter Text To Analyze..."  mode={mode} showAlert={showAlert} />
